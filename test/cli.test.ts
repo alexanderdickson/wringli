@@ -62,6 +62,19 @@ describe('cli run', () => {
     expect(logs.err).toMatch(/winner/);
   });
 
+  it('keeps minify quiet when asked', async () => {
+    const dir = mkdtempSync(join(tmpdir(), 'wringli-test-'));
+    const input = join(dir, 'sample.js');
+    const output = join(dir, 'sample.min.js');
+    writeFileSync(input, 'function add(a, b) { return a + b; }\n');
+    const logs = collect();
+    const code = await run(['node', 'wringli', input, '-o', output, '--quiet'], logs.io);
+    expect(code).toBe(0);
+    expect(readFileSync(output, 'utf8').length).toBeLessThan(readFileSync(input, 'utf8').length);
+    expect(logs.out).toBe('');
+    expect(logs.err).toBe('');
+  });
+
   it('returns 2 for an unknown option', async () => {
     const logs = collect();
     const code = await run(['node', 'wringli', '--not-a-real-flag'], logs.io);

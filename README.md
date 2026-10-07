@@ -129,7 +129,11 @@ The size win is small if you already pin the right engine (0-1% vs always-terser
 ## Library
 
 ```ts
-import { minifyEnsemble, sizes } from 'wringli';
+import { minifyEnsemble, sizes, type MinifyOptions } from 'wringli';
+
+const opts: MinifyOptions = { module: true, engines: 'terser,swc,oxc' };
+const result = await minifyEnsemble(code, opts);
+console.log(result.winner, sizes(result.code));
 ```
 
 Same scoring helpers the CLI uses.

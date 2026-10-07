@@ -1,8 +1,28 @@
 {
   "name": "wringli",
   "version": "0.1.0",
-  "private": true,
   "description": "Run several JS minifiers and keep the smallest Brotli output",
+  "keywords": [
+    "brotli",
+    "cli",
+    "esbuild",
+    "minifier",
+    "minify",
+    "oxc",
+    "swc",
+    "terser",
+    "uglify"
+  ],
+  "homepage": "https://github.com/alexanderdickson/wringli#readme",
+  "bugs": {
+    "url": "https://github.com/alexanderdickson/wringli/issues"
+  },
+  "license": "MIT",
+  "author": "Alexander Dickson <alex@alexanderdickson.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexanderdickson/wringli.git"
+  },
   "bin": {
     "wringli": "./dist/wringli.js"
   },
@@ -46,5 +66,8 @@
     "jest": "^30.5.2",
     "oxfmt": "0.72.0",
     "oxlint": "1.87.0"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }

@@ -102,7 +102,7 @@ function printMinifyReport(
   flags: Flags,
   err: NodeJS.WritableStream,
 ): void {
-  if (flags.json) return;
+  if (flags.json || flags.quiet) return;
   err.write(`${file}\n`);
   err.write(
     `  original  raw ${fmt(result.original.raw).padStart(10)}  gzip ${fmt(result.original.gzip).padStart(9)}  brotli ${fmt(result.original.brotli).padStart(9)}\n`,
