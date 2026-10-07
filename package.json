@@ -1,0 +1,50 @@
+{
+  "name": "wringli",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Run several JS minifiers and keep the smallest Brotli output",
+  "bin": {
+    "wringli": "./dist/wringli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsgo",
+    "lint": "oxlint .",
+    "lint:fix": "oxlint --fix .",
+    "fmt": "oxfmt .",
+    "fmt:check": "oxfmt --check .",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "check": "oxlint . && oxfmt --check . && tsgo --noEmit && npm test"
+  },
+  "dependencies": {
+    "@swc/core": "^1.16.13",
+    "commander": "^15.0.0",
+    "esbuild": "^0.28.2",
+    "oxc-minify": "^0.153.0",
+    "terser": "^5.51.2",
+    "uglify-js": "^3.19.3"
+  },
+  "devDependencies": {
+    "@swc/jest": "^0.2.39",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^26.6.4",
+    "@types/uglify-js": "^3.17.5",
+    "@typescript/native-preview": "^7.0.0-dev.20260707.2",
+    "jest": "^30.5.2",
+    "oxfmt": "0.72.0",
+    "oxlint": "1.87.0"
+  }
+}
