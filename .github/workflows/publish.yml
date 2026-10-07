@@ -1,0 +1,45 @@
+name: Publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: Semver bump to apply before publish
+        type: choice
+        options: [patch, minor, major, none]
+        default: patch
+
+permissions:
+  contents: write
+  id-token: write
+
+concurrency:
+  group: publish
+
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+
+      - run: npm ci
+      - run: npm run check
+
+      - name: Bump version and push tag
+        if: inputs.bump != 'none'
+        env:
+          BUMP: ${{ inputs.bump }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          npm version "$BUMP" -m "Release %s."
+          git push
+          git push --tags
+
+      - run: npm publish

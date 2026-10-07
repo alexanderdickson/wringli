@@ -47,7 +47,8 @@
     "fmt": "oxfmt .",
     "fmt:check": "oxfmt --check .",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-    "check": "oxlint . && oxfmt --check . && tsgo --noEmit && npm test"
+    "check": "oxlint . && oxfmt --check . && tsgo --noEmit && npm test",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@swc/core": "^1.16.13",

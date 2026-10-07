@@ -150,6 +150,12 @@ npm run fmt
 npm run check
 ```
 
+## Release
+
+Publish `0.1.0` once from your machine (`npm login`, then `npm publish`). Then on [the npm package settings](https://www.npmjs.com/package/wringli/access) add a GitHub Actions trusted publisher: user `alexanderdickson`, repo `wringli`, workflow filename `publish.yml`, and allow `npm publish`.
+
+Later versions: Actions → Publish → Run workflow, pick `patch` / `minor` / `major`. That bumps `package.json`, pushes a `v*` tag, and publishes. Use `none` to retry a publish without bumping.
+
 ## Author
 
 [alexanderdickson](https://github.com/alexanderdickson), with vibecoding
