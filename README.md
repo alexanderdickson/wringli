@@ -1,5 +1,7 @@
 # wringli
 
+[![CI](https://github.com/alexanderdickson/wringli/actions/workflows/ci.yml/badge.svg)](https://github.com/alexanderdickson/wringli/actions/workflows/ci.yml)
+
 Get the smallest over the wire JS bundles possible and never think about it again.
 
 Run several JavaScript minifiers on the same file, score each by **Brotli-11**, keep the smallest download.
@@ -134,7 +136,7 @@ Same scoring helpers the CLI uses.
 
 ## Development
 
-TypeScript (ESM), compiled with `tsgo`. Lint and format with oxlint / oxfmt.
+TypeScript (ESM), compiled with `tsgo`. Lint and format with oxlint / oxfmt. GitHub Actions runs `npm run check` on every push and pull request.
 
 ```bash
 npm run build
